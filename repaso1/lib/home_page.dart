@@ -12,12 +12,18 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Tarea 1'),
         ),
-        body: Align(
-          alignment: Alignment.topCenter,
-          child: Text('BIENVENIDOS', style:  GoogleFonts.pacifico(fontSize: 30, color: Colors.grey),)
-          ),
+        body: Column(
+          children: [
+            Align(
+                alignment: Alignment.topCenter,
+                child: Text(
+                  'BIENVENIDOS',
+                  style: GoogleFonts.pacifico(fontSize: 30, color: Colors.grey),
+                )),
+            Image.asset("assets/Dash Dart Black.jpg"),
+          ],
+        ),
       ),
     );
   }
 }
-
