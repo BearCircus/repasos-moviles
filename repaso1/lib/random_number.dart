@@ -50,7 +50,7 @@ class _RandomNumberPageState extends State<RandomNumberPage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  '${value}',
+                  '$value',
                   style: const TextStyle(
                       color: Colors.red,
                       fontSize: 30,
@@ -74,8 +74,8 @@ class _RandomNumberPageState extends State<RandomNumberPage> {
 
               ElevatedButton(
                 onPressed: () {
-                String? inputValue = '${widget.inputValue}$value';
-                  
+                  String? inputValue = '${widget.inputValue}$value';
+
                   Navigator.pop(context, inputValue);
                 },
                 style: ButtonStyle(

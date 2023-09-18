@@ -21,22 +21,22 @@ class _MyAppState extends State<MyApp> {
       context: context,
       builder: (BuildContext dialogContext) {
         return AlertDialog(
-          title: Text("Ingrese datos"),
+          title: const Text("Ingrese datos"),
           content: TextField(
             onChanged: (value) {
               inputValue = value;
             },
-            decoration: InputDecoration(hintText: "Ingrese palabra"),
+            decoration: const InputDecoration(hintText: "Ingrese palabra"),
           ),
           actions: <Widget>[
             TextButton(
-              child: Text("Cancelar"),
+              child: const Text("Cancelar"),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: Text("Aceptar"),
+              child: const Text("Aceptar"),
               onPressed: () async {
                 Navigator.of(context).pop();
                 final result = await Navigator.push<String>(
@@ -93,13 +93,18 @@ class _MyAppState extends State<MyApp> {
                     child: const Text('Pagina 2'),
                   ),
                   ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
+                    onPressed: () async {
+                      final face = await Navigator.push<String>(
                         context,
                         MaterialPageRoute(
                           builder: (context) => const IconsSelectionPage(),
                         ),
                       );
+                      if (face != null) {
+                        setState(() {
+                          iconoFeo = face;
+                        });
+                      }
                     },
                     child: const Text('Pagina 3'),
                   ),
