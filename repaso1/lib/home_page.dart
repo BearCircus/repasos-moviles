@@ -1,11 +1,56 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'random_number.dart';
 
-class MyApp extends StatelessWidget {
-  MyApp({super.key});
+class MyApp extends StatefulWidget {
+  MyApp({Key? key}) : super(key: key);
 
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   String text = '';
   String iconoFeo = '';
+  String texto = '';
+
+  Future<void> _showDialog() async {
+    String? inputValue;
+    return showDialog<void>(
+        context: context,
+        builder: (BuildContext dialogContext) {
+          return AlertDialog(
+            title: Text("Ingrese datos"),
+            content: TextField(
+              onChanged: (value) {
+                inputValue = value;
+              },
+              decoration: InputDecoration(hintText: "Ingrese palabra"),
+            ),
+            actions: <Widget>[
+              TextButton(
+                child: Text("Cancelar"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+              TextButton(
+                child: Text("Aceptar"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          RandomNumberPage(inputValue: inputValue),
+                    ),
+                  );
+                },
+              ),
+            ],
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,21 +63,23 @@ class MyApp extends StatelessWidget {
         body: Column(
           children: [
             Align(
-              alignment: Alignment.topCenter,
-              child: Text('BIENVENIDOS', 
-              style:  GoogleFonts.pacifico(fontSize: 30, color: Colors.grey),)
-            ),
+                alignment: Alignment.topCenter,
+                child: Text(
+                  'BIENVENIDOS',
+                  style: GoogleFonts.pacifico(fontSize: 30, color: Colors.grey),
+                )),
             Image.asset('assets/Dash_Dart_Black.jpg'),
             const SizedBox(height: 30),
-            const Text('Seleccione la acción a realizar:',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-
+            const Text(
+              'Seleccione la acción a realizar:',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
             const SizedBox(height: 100),
-            
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: _showDialog,
                   child: const Text('Pagina 2'),
                 ),
                 ElevatedButton(
@@ -41,13 +88,11 @@ class MyApp extends StatelessWidget {
                 ),
               ],
             ),
-
             const SizedBox(height: 50),
-
             Text('Pg.2 => ${text}'),
-            
-            const SizedBox(height: 50,),
-            
+            const SizedBox(
+              height: 50,
+            ),
             Text('Pg.3 => ${iconoFeo}'),
           ],
         ),
