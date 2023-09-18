@@ -15,9 +15,9 @@ class _MyAppState extends State<MyApp> {
   String iconoFeo = '';
   String texto = '';
 
-  Future<void> _showDialog() async {
+  Future<String?> _showDialog() async {
     String? inputValue;
-    return showDialog<void>(
+    return await showDialog<String>(
       context: context,
       builder: (BuildContext dialogContext) {
         return AlertDialog(
@@ -37,15 +37,20 @@ class _MyAppState extends State<MyApp> {
             ),
             TextButton(
               child: Text("Aceptar"),
-              onPressed: () {
+              onPressed: () async {
                 Navigator.of(context).pop();
-                Navigator.push(
+                final result = await Navigator.push<String>(
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
                         RandomNumberPage(inputValue: inputValue),
                   ),
                 );
+                if (result != null) {
+                  setState(() {
+                    text = result;
+                  });
+                }
               },
             ),
           ],

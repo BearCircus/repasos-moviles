@@ -33,37 +33,43 @@ class _RandomNumberPageState extends State<RandomNumberPage> {
         child: Center(
           child: Column(
             children: [
-
-              Padding(
-                padding: const EdgeInsets.only(top: 50.0, bottom: 20.0),
+              const Padding(
+                padding: EdgeInsets.only(top: 50.0, bottom: 20.0),
                 child: Text(
                   'Genere número random',
                   style: TextStyle(
-                  color: Colors.purple,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24, 
+                    color: Colors.purple,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
                   ),
                 ),
               ),
 
-            // Text('Entered value: ${widget.inputValue}'),
+              // Text('Entered value: ${widget.inputValue}'),
 
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text('${value}', style: const TextStyle(color: Colors.red ,fontSize: 30, fontWeight: FontWeight.bold),),
+                child: Text(
+                  '${value}',
+                  style: const TextStyle(
+                      color: Colors.red,
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
 
               ElevatedButton(
                 onPressed: () {
                   value = Random().nextInt(999);
-                  setState(() {
-                    
-                  });
+                  setState(() {});
                 },
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(Colors.white)
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(Colors.white)),
+                child: const Text(
+                  'Generar',
+                  style: TextStyle(color: Colors.black),
                 ),
-                child: const Text('Generar', style: TextStyle(color: Colors.black),),
               ),
 
               ElevatedButton(
@@ -73,9 +79,10 @@ class _RandomNumberPageState extends State<RandomNumberPage> {
                   Navigator.pop(context, inputValue);
                 },
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(Colors.white)
-                ),
-                child: const Text('Guardar', style: TextStyle(color: Colors.black)),
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(Colors.white)),
+                child: const Text('Guardar',
+                    style: TextStyle(color: Colors.black)),
               ),
             ],
           ),
