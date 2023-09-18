@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'icons_page.dart';
 import 'random_number.dart';
 
 class MyApp extends StatefulWidget {
@@ -87,7 +88,14 @@ class _MyAppState extends State<MyApp> {
                     child: const Text('Pagina 2'),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const IconsSelectionPage(),
+                        ),
+                      );
+                    },
                     child: const Text('Pagina 3'),
                   ),
                 ],

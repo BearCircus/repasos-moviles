@@ -70,7 +70,7 @@ class _RandomNumberPageState extends State<RandomNumberPage> {
                 onPressed: () {
                 String? inputValue = '${widget.inputValue}$value';
                   
-                  Navigator.pop(context);
+                  Navigator.pop(context, inputValue);
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(Colors.white)
