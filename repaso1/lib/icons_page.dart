@@ -10,16 +10,53 @@ class IconsSelectionPage extends StatefulWidget {
 class _IconsSelectionPageState extends State<IconsSelectionPage> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Material App',
-      home: Scaffold(
+    return  Scaffold(
         appBar: AppBar(
-          title: const Text('Material App Bar'),
+          title: const Text('Página 3'),
         ),
-        body: const Center(
-          child: Text('Hello World'),
+        body: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+              Container(
+                width: 100,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context, '( ,,◕ - ◕,, )');
+                  },
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                  ),
+                  child: const Text('( ,,◕ - ◕,, )', style: TextStyle(color: Colors.black),),
+                ),
+              ),
+
+              Container(
+                width: 100,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context, 'ʕっ•ᴥ•ʔっ');
+                  },
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                  ),
+                  child: const Text('ʕっ•ᴥ•ʔっ', style: TextStyle(color: Colors.black),),
+                ),
+              ),
+
+              Container(
+                width: 100,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context, '¯\_(ツ)_/¯');
+                  },
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                  ),
+                  child: const Text('¯\_(ツ)_/¯', style: TextStyle(color: Colors.black),),
+                ),
+              ),    
+          ],
         ),
-      ),
     );
   }
 }
